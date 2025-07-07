@@ -48,6 +48,34 @@ app.get('/api/orders', async (req, res) => {
   res.json(orders);
 });
 
+app.get('/api/orders/:tableId', async (req, res) => {
+  const tableId = parseInt(req.params.tableId);
+
+  try {
+    const orders = await prisma.order.findMany({
+      where: { table: tableId },
+      include: {
+        items: {
+          include: {
+            menuItem: true
+          }
+        }
+      },
+      orderBy: {
+        createdAt: 'desc'
+      }
+    });
+
+    res.json(orders);
+  } catch (err) {
+    console.error('Error loading orders:', err);
+    res.status(500).json({ error: 'Failed to fetch orders' });
+  }
+});
+
+
+
+
 // ✅ Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on http://localhost:${PORT}`);
