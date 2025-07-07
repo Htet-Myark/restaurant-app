@@ -16,10 +16,12 @@ model MenuItem {
 }
 
 model Order {
-  id        Int         @id @default(autoincrement())
-  createdAt DateTime    @default(now())
+  id        Int        @id @default(autoincrement())
+  table     Int        // NEW
+  createdAt DateTime   @default(now())
   items     OrderItem[]
 }
+
 
 model OrderItem {
   id          Int      @id @default(autoincrement())
@@ -29,3 +31,4 @@ model OrderItem {
   menuItemId  Int
   quantity    Int
 }
+

@@ -18,18 +18,21 @@ app.get('/api/menu', async (req, res) => {
 
 // ✅ POST a new order
 app.post('/api/order', async (req, res) => {
-  const { items } = req.body; // items: [{ menuItemId, quantity }]
+  const { table, items } = req.body;
+
   const order = await prisma.order.create({
     data: {
+      table,
       items: {
         create: items.map(item => ({
           menuItemId: item.menuItemId,
-          quantity: item.quantity
+          quantity: item.quantity,
         }))
       }
     },
     include: { items: true }
   });
+
   res.json(order);
 });
 
