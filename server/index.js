@@ -30,7 +30,7 @@ app.post('/api/order', async (req, res) => {
         }))
       }
     },
-    include: { items: true }
+    include: { items: true },
   });
 
   res.json(order);
