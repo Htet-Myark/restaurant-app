@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import './style/TablePage.css';
+import "../style/TablePage.css";
+
 
 function TablePage() {
   const { tableId } = useParams();

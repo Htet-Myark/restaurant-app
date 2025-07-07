@@ -1,0 +1,24 @@
+.admin-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: auto;
+}
+
+.admin-order-list {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-order {
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+.admin-order ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}

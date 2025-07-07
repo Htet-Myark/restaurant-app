@@ -74,6 +74,28 @@ app.get('/api/orders/:tableId', async (req, res) => {
 });
 
 
+app.get('/api/admin/orders', async (req, res) => {
+  try {
+    const orders = await prisma.order.findMany({
+      include: {
+        items: {
+          include: {
+            menuItem: true
+          }
+        }
+      },
+      orderBy: {
+        createdAt: 'desc'
+      }
+    });
+
+    res.json(orders);
+  } catch (err) {
+    console.error('Admin order fetch error:', err);
+    res.status(500).json({ error: 'Failed to load admin orders' });
+  }
+});
+
 
 
 // ✅ Start server
