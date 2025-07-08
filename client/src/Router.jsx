@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TablePage from './Pages/TablePage';
 import AdminDashboard from './Pages/AdminDashboard';
 
+
 function AppRouter() {
   return (
     <BrowserRouter>
